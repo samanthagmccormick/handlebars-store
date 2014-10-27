@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Game Supastore!</title>
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+
+  <div class='container'>
+
+    <div class='row'>
+        <h1 class='center'>Games In Stock</h1>
+
+        <div class='col-lg-8 col-md-8 col-sm-8 col-xs-8'>
+            <!-- Product List Placeholder -->
+            <div id='product-container' class='container'>
+            </div>
+        </div>
+
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+            <!-- Wishlist Placeholder -->
+            <ul id='wishlist'>
+                <h2 class='center'>Wishlist</h2>
+            </ul>
+        </div>
+    </div> <!-- End row -->
+
+  </div>  <!-- End main container -->
+        
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.js"></script>
+    <!-- Handlebars -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <!-- Products-Data.js -->
+    <script src="products-data.js"></script>
+    <script src="main.js"></script>
+
+  <!-- TEMPLATE: List of Products -->
+  <script id='product-template' type='text/x-handlebars-template'>
+    <div class='product col-lg-2 col-md-2 col-sm-4 col-xs-12'>
+      <img src="{{image}}"></img>
+      <h4>{{title}}</h4>
+
+      {{!-- If there's a sale price --}}
+      {{#if sale}}
+        <p class='blue'><s>Cost: ${{cost}}</s></p>
+        <p class='red'><strong>ON SALE: ${{sale}}</strong></p>
+      {{else}}
+        <p class='blue'><strong>Cost: ${{cost}}</strong></p>
+      {{/if}}
+
+      <h5>About this Game</h5>
+      {{!-- Use each to  --}}
+      {{#each details}}
+        <p><em>{{@key}}</em>: {{this}}</p>
+      {{/each}}
+
+      <button class='btn btn-sm btn-primary' name='addItem'>Add Item to Wishlist</button>
+    </div> {{!-- End .product div --}}
+  </script>
+
+  <!-- TEMPLATE: 1 Wishlist Item -->
+  <script id='wishlist-template' type='text/x-handlebars-template'>
+      <li>
+        <h5>{{this}}</h5>
+        <button class='btn-danger btn-sm'>Remove Item</button>
+      </li>
+  </script>
+
+  </body>
+</html>

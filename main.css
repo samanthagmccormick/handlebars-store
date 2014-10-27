@@ -1,0 +1,24 @@
+/* Helper Classes */
+
+.center {
+	text-align: center;
+}
+
+/* Basics */
+
+img {
+	display: inline;
+}
+
+.product {
+	margin: 10px;
+	float: left;
+}
+
+.red {
+	color: red;
+}
+
+.blue {
+	color: #3399CC;
+}
